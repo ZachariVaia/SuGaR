@@ -71,7 +71,7 @@ sudo docker run -it --rm --gpus all \
   -e HOME=/app \
   sugar-final bash -lc "\
     set -e
-    REF=\$(find /app/output -type f -name '2000.pt' | head -n1)
+    REF=\$(find /app/output/refined/ -type f -name '2000.pt' | head -n1)
 
     if [ -z \"\$REF\" ]; then
       echo '[!] No refined checkpoint found, skipping mesh extraction.'
