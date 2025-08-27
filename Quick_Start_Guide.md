@@ -25,6 +25,9 @@ cd ~
 mkdir -p SuGaR_Docker
 cd ~/SuGaR_Docker
 
+mkdir -p data
+> Folder to store datasets.
+
 mkdir -p outputs
 > The `outputs/` folder will store all pipeline results.
 
