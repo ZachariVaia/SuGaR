@@ -56,7 +56,7 @@ You can run the pipeline either inside Docker (recommended) or directly on your 
 
 
 
-### Run directly on host (not recommended)
+### Run directly on host 
 
 ```bash
 bash run_sugar_pipeline.sh
@@ -69,7 +69,7 @@ bash run_sugar_pipeline.sh
 All results are stored in:
 
 ```
-SuGaR_Docker/SuGaR/outputs/
+SuGaR_Docker/outputs/
 ```
 
 ---
@@ -92,8 +92,11 @@ SuGaR_Docker/SuGaR/outputs/
 ```bash
 # Clone + setup
 cd ~ && mkdir -p SuGaR_Docker && cd ~/SuGaR_Docker \
-  && git clone https://github.com/ZachariVaia/SuGaR.git \
-  && cd SuGaR && mkdir -p outputs
+    && mkdir -p outputs  && git clone https://github.com/ZachariVaia/SuGaR.git \
+    && cd SuGaR
+
+
+
 
 # Build image
 docker build -t sugar-final -f Dockerfile_final .
