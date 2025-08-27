@@ -25,15 +25,17 @@ cd ~
 mkdir -p SuGaR_Docker
 cd ~/SuGaR_Docker
 
-git clone https://github.com/ZachariVaia/SuGaR.git
-cd SuGaR
-
 mkdir -p outputs
 ```
 
 > The `outputs/` folder will store all pipeline results.
 
 ---
+
+git clone https://github.com/ZachariVaia/SuGaR.git
+cd SuGaR
+
+
 
 ## 2) Build the Docker Image
 
