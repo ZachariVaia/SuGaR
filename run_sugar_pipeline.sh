@@ -22,16 +22,16 @@ echo "======================================"
 # 1. Prepare directories
 # -------------------------------
 echo "[*] STEP 1: Preparing directories..."
-# mkdir -p ~/SuGar_Docker/cache
-mkdir -p ~/SuGar_Docker/outputs/$DATASET_NAME
-sudo chown -R $(id -u):$(id -g) ~/SuGar_Docker/outputs/$DATASET_NAME
-chmod -R 775 ~/SuGar_Docker/outputs/$DATASET_NAME
+mkdir -p ~/SuGaR_Docker/cache
+mkdir -p ~/SuGaR_Docker/outputs/$DATASET_NAME
+sudo chown -R $(id -u):$(id -g) ~/SuGaR_Docker/outputs/$DATASET_NAME
+chmod -R 775 ~/SuGaR_Docker/outputs/$DATASET_NAME
 
 # -------------------------------
 # 2. Build Docker image (if needed)
 # -------------------------------
 echo "[*] STEP 2: Building Docker image sugar-final (if not already built)..."
-cd ~/SuGar_Docker/SuGaR
+cd ~/SuGaR_Docker/SuGaR
 sudo docker build -t sugar-final -f Dockerfile_final .
 
 
@@ -42,10 +42,10 @@ echo "[*] STEP 3: Training SuGaR on dataset=$DATASET_NAME..."
 
 
 sudo docker run -it --rm --gpus all \
-  -v "$HOME/SuGar_Docker/data/$DATASET_NAME:/app/data" \
-  -v "$HOME/SuGar_Docker/outputs/$DATASET_NAME:/app/output" \
+  -v "$HOME/SuGaR_Docker/data/$DATASET_NAME:/app/data" \
+  -v "$HOME/SuGaR_Docker/outputs/$DATASET_NAME:/app/output" \
   --user $(id -u):$(id -g) \
-  -v "$HOME/SuGar_Docker/cache:/app/.cache" \
+  -v "$HOME/SuGaR_Docker/cache:/app/.cache" \
   -e XDG_CACHE_HOME=/app/.cache \
   -e TORCH_EXTENSIONS_DIR=/app/.cache/torch_extensions \
   -e HOME=/app \
@@ -62,9 +62,9 @@ sudo docker run -it --rm --gpus all \
 # -------------------------------
 echo "[*] STEP 4: Extracting textured mesh..."
 sudo docker run -it --rm --gpus all \
-  -v "$HOME/SuGar_Docker/data/$DATASET_NAME:/app/data" \
-  -v "$HOME/SuGar_Docker/outputs/$DATASET_NAME:/app/output" \
-  -v "$HOME/SuGar_Docker/cache:/app/.cache" \
+  -v "$HOME/SuGarR_Docker/data/$DATASET_NAME:/app/data" \
+  -v "$HOME/SuGaR_Docker/outputs/$DATASET_NAME:/app/output" \
+  -v "$HOME/SuGaR_Docker/cache:/app/.cache" \
   --user $(id -u):$(id -g) \
   -e XDG_CACHE_HOME=/app/.cache \
   -e TORCH_EXTENSIONS_DIR=/app/.cache/torch_extensions \
@@ -97,7 +97,7 @@ sudo docker run -it --rm --gpus all \
 # -------------------------------
 echo "[*] STEP 5: Preparing viewer..."
 sudo docker run -it --rm -p 5173:5173 \
-  -v "$HOME/SuGar_Docker/outputs/$DATASET_NAME:/app/output" \
+  -v "$HOME/SuGaR_Docker/outputs/$DATASET_NAME:/app/output" \
   sugar-final bash -lc '
     set -e
     PLY=$(ls /app/output/refined_ply/data/*.ply | head -n1 || true)
@@ -131,3 +131,4 @@ EOF
 
 echo "======================================"
 echo " DONE! Open http://localhost:5173 to view results."
+
