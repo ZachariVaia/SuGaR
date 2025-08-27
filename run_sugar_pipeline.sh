@@ -62,7 +62,7 @@ sudo docker run -it --rm --gpus all \
 # -------------------------------
 echo "[*] STEP 4: Extracting textured mesh..."
 sudo docker run -it --rm --gpus all \
-  -v "$HOME/SuGarR_Docker/data/$DATASET_NAME:/app/data" \
+  -v "$HOME/SuGaR_Docker/data/$DATASET_NAME:/app/data" \
   -v "$HOME/SuGaR_Docker/outputs/$DATASET_NAME:/app/output" \
   -v "$HOME/SuGaR_Docker/cache:/app/.cache" \
   --user $(id -u):$(id -g) \
