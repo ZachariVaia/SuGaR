@@ -99,7 +99,7 @@ cd ~ && mkdir -p SuGaR_Docker && cd ~/SuGaR_Docker \
 
 
 # Build image
-docker build -t sugar-final -f Dockerfile_final .
+sudo docker build -t sugar-final -f Dockerfile_final .
 
 # Run Pipeline
 ./run_sugar_pipeline.sh dataset_name (eg bonsai)
