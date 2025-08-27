@@ -54,30 +54,9 @@ docker build -t sugar-final -f Dockerfile_final .
 
 You can run the pipeline either inside Docker (recommended) or directly on your host if all dependencies are installed.
 
-### A) Run inside Docker (recommended)
 
-```bash
-# Ensure you are inside the SuGaR folder
-pwd  # should show: /home/<user>/SuGaR_Docker/SuGaR
 
-docker run --rm -it \
-  -v "$(pwd)":/workspace \
-  -w /workspace \
-  sugar-final \
-  bash run_sugar_pipeline.sh
-```
-
-If using an NVIDIA GPU, add `--gpus all`:
-
-```bash
-docker run --rm -it --gpus all \
-  -v "$(pwd)":/workspace \
-  -w /workspace \
-  sugar-final \
-  bash run_sugar_pipeline.sh
-```
-
-### B) Run directly on host (not recommended)
+### Run directly on host (not recommended)
 
 ```bash
 bash run_sugar_pipeline.sh
